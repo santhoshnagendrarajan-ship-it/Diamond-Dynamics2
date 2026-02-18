@@ -1,0 +1,9 @@
+streamlit
+pandas
+numpy
+scikit-learn
+torch
+
+# Optional / useful tools
+# matplotlib
+# seaborn

@@ -40,26 +40,7 @@ color = st.selectbox("Color", color_order)
 cut = st.selectbox("Cut", cut_order)
 clarity = st.selectbox("Clarity", clarity_order)
 
-    # Ordinal mappings
 
-''''crow = {}
-crow['carat'] = carat
-    # reasonable defaults for depth/table taken from training df medians
-    #row['depth'] = df['depth'].median() if 'depth' in df.columns else 61.0
-    #row['table'] = df['table'].median() if 'table' in df.columns else 57.0
-crow['depth'] = depth
-crow['table'] = table
-crow['x'] = x
-crow['y'] = y
-crow['z'] = z
-crow['volume'] = x * y * z
-    # price_per_carat unknown at prediction time => set NaN so preprocessor imputes median
-crow['price_per_carat'] = np.nan
-crow['dimension_ratio'] = (x + y) / (2 * z) if z != 0 else 0.0
-    # categorical
-crow['cut'] = cut
-crow['color'] = color
-crow['clarity'] = clarity'''
 dimension_ratio = (x + y) / (2 * z) if z != 0 else 0.0
 price_per_carat = 1000.0  # placeholder, will be imputed
     # carat category
@@ -69,7 +50,7 @@ elif carat <= 1.5:
     cat = 'Medium'
 else:
     cat = 'Heavy'
-#crow['carat_category'] = cat
+
 carat_category = cat
 volume = x * y * z
 cut_mapping = {v: i for i, v in enumerate(cut_order)}
@@ -77,10 +58,7 @@ color_mapping = {v: i for i, v in enumerate(color_order)}
 clarity_mapping = {v: i for i, v in enumerate(clarity_order)}
 carat_mapping={v: i for i, v in enumerate(carat_order)}
 # Apply mapping
-'''crow['cut_encoded'] = cut_mapping[crow['cut']]
-crow['color_encoded'] = color_mapping[crow['color']]
-crow['clarity_encoded'] = clarity_mapping[crow['clarity']]
-crow['carat_encoded'] = carat_mapping[crow['carat_category']]'''
+
 cut_encoded = cut_mapping[cut]
 color_encoded = color_mapping[color]
 clarity_encoded = clarity_mapping[clarity]
